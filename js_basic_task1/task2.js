@@ -1,7 +1,7 @@
-let isNumber = 10;
+let number = 10;
 
-let isString = "it`s string";
+let string = "it`s string";
 
 let isBoolean = true;
 
-console.log(isNumber, isString, isBoolean);
+console.log(number, string, isBoolean);
