@@ -1,9 +1,12 @@
+let email = "daniel.abrams@gmail.com";
 
-const names = ["John", "Fernando", "Alexandra", "Anatolii", "Arina", "Elon"];
+let emailParts = email.split('@');
 
-const resultName = names.find(name => name.length > 6);
+emailParts.splice(1, 1, 'changed.com');
 
-console.log("Перше ім'я з довжиною більше 6 символів:", resultName);
+let  modifiedEmail = emailParts.join('@');
+
+console.log(modifiedEmail);
 
 
 
