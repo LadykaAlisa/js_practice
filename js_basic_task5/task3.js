@@ -1,9 +1,13 @@
+const sumNumbers = (arr) => {
+    let sum = 0;
+    for (let element of arr) {
+        sum += element;
+    }
+       return sum;
+     }
+    let numbers = [100, 20, 3, 4, 5];
+    console.log("Сума усіх елементів масива дорівнює:", sumNumbers(numbers));
 
-const emails = ["example1@yahoo.com", "myemail@mail.com", "trueemail@gmail.com"];
-
-const gmailEmails = emails.filter(email => email.includes('gmail.com'));
-
-console.log(gmailEmails);
 
 
 
