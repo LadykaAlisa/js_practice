@@ -1,17 +1,9 @@
-const squareNumbers = (arr) => {
- let newArr = [];
- for (let element of arr){
-    newArr.push(element * element);
-  }
-  return newArr;
+function divider(divisor) {
+  return function(dividend) {
+      return dividend / divisor;
+  };
 }
 
-let numbers =[1, 2, 3, 8, 9];
-console.log("Новий масив чисел піднесений до квадрата:", squareNumbers(numbers));
-
-
-
-
-
-
+const divideByFive = divider(5);
+console.log(divideByFive(10)); 
 
