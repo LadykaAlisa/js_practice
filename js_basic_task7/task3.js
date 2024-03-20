@@ -1,38 +1,40 @@
-function calculate(num1, num2, operator) {
-    if (typeof num1 !== 'number' || typeof num2 !== 'number') {
-        throw new Error("Параметри повинні бути числами");
-    }
-    if (typeof operator !== 'string' || !['+', '-', '*', '/'].includes(operator)) {
-        throw new Error("Третій параметр повинен бути +,-,/ або *");
-    }
-    if (arguments.length !== 3) {
-        throw new Error("Кількість аргументів повинна бути рівною 3");
-    }
-    if (operator === '/' && num2 === 0) {
-        throw new Error("Коли операція ділення, другий параметр повинен не дорівнювати 0");
-    }
 
-    let result;
-    if (operator === '+') {
-        result = num1 + num2;
-    } else if (operator === '-') {
-        result = num1 - num2;
-    } else if (operator === '*') {
-        result = num1 * num2;
-    } else if (operator === '/') {
-        result = num1 / num2;
+const Library = {
+    books: [],
+    addBook: function(bookName, bookAuthor, bookYear, bookId) {
+        const newBook = {
+            name: bookName,
+            author: bookAuthor,
+            year: bookYear,
+            id: bookId
+        };
+        this.books.push(newBook);
+    },
+    printBookInfo: function(bookId) {
+        const book = this.books.find(book => book.id === bookId);
+        if (book) {
+            console.log(`Ім'я: ${book.name}, Автор: ${book.author}, Рік: ${book.year}`);
+        } else {
+            console.log(`Книга з id ${bookId} не знайдена.`);
+        }
+    },
+    printAllBooks: function() {
+        console.log("Інформація про всі книги в бібліотеці:");
+        this.books.forEach(book => {
+            console.log(`Ім'я: ${book.name}, Автор: ${book.author}, Рік: ${book.year}, ID: ${book.id}`);
+        });
     }
-    return `${num1} ${operator} ${num2} = ${result}`;
-}
+};
 
-try {
-    console.log(calculate(100, 5, "*"));
-    console.log(calculate(100, 5, 3)); 
-    console.log(calculate(100, 0, "/")); 
-} catch (error) {
-    console.error(error.message);
-}
 
+Library.addBook("Harry Potter", "J.K. Rowling", 1997, 1);
+Library.addBook("To Kill a Mockingbird", "Harper Lee", 1960, 2);
+Library.addBook("The Great Gatsby", "F. Scott Fitzgerald", 1925, 3);
+
+
+Library.printAllBooks();
+
+Library.printBookInfo(2);
 
 
 
