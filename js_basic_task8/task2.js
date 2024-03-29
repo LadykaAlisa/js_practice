@@ -1,23 +1,84 @@
-const person = new Object();
-person.name = "Alice";
-person.age = 25;
-person.gender = "female";
-person.greet = function() {
-    return `Hello, my name is ${this.name}.`;
-};
+class Animal {
+    constructor(color, name, type) {
+        this.color = color;
+        this.name = name;
+        this.type = type;
+    }
 
-const car = new Object();
-car.brand = "BMW";
-car.model = "X5";
-car.year = 2020;
-car.drive = function() {
-    return "The car is driving.";
-};
+    sayHello() {
+        console.log(`Hello, I'm ${this.name}, a ${this.type} with ${this.color} color.`);
+    }
+
+    run() {
+        console.log(`${this.type} ${this.name} is running.`);
+    }
+}
 
 
-console.log(person.name);
+class Dog extends Animal {
+    constructor(color, name, breed, age) {
+        super(color, name, "dog");
+        this.breed = breed;
+        this.age = age;
+    }
 
-console.log(car.brand);
+    bark() {
+        console.log(`${this.name} says Woof!`);
+    }
 
-console.log(person.greet()); 
-console.log(car.drive()); 
+    fetch() {
+        console.log(`${this.name} is fetching the ball.`);
+    }
+}
+
+
+class Cat extends Animal {
+    constructor(color, name, breed, isFriendly) {
+        super(color, name, "cat");
+        this.breed = breed;
+        this.isFriendly = isFriendly;
+    }
+
+    purr() {
+        console.log(`${this.name} is purring.`);
+    }
+
+    sleep() {
+        console.log(`${this.name} is sleeping.`);
+    }
+}
+
+
+class Shepherd extends Dog {
+    constructor(color, name, age, favoriteFood) {
+        super(color, name, "German Shepherd", age);
+        this.favoriteFood = favoriteFood;
+    }
+
+    guard() {
+        console.log(`${this.name} is guarding.`);
+    }
+}
+
+
+const myDog = new Dog("brown", "Max", "Labrador", 3);
+const myCat = new Cat("gray", "Whiskers", "Persian", true);
+const myShepherd = new Shepherd("black", "Rocky", 4, "Meat");
+
+
+myDog.sayHello();
+myDog.run();
+myDog.bark();
+myDog.fetch();
+
+myCat.sayHello();
+myCat.run();
+myCat.purr();
+myCat.sleep();
+
+myShepherd.sayHello();
+myShepherd.run();
+myShepherd.bark();
+myShepherd.fetch();
+myShepherd.guard();
+console.log(`${myShepherd.name}'s favorite food is ${myShepherd.favoriteFood}.`);

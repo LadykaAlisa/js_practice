@@ -1,4 +1,3 @@
-// Клас Animal
 class Animal {
     constructor(color, name, type) {
         this.color = color;
