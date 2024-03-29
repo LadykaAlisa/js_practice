@@ -1,42 +1,35 @@
-
-const Library = {
-    books: [],
-    addBook: function(bookName, bookAuthor, bookYear, bookId) {
-        const newBook = {
-            name: bookName,
-            author: bookAuthor,
-            year: bookYear,
-            id: bookId
-        };
-        this.books.push(newBook);
-    },
-    printBookInfo: function(bookId) {
-        const book = this.books.find(book => book.id === bookId);
-        if (book) {
-            console.log(`Ім'я: ${book.name}, Автор: ${book.author}, Рік: ${book.year}`);
-        } else {
-            console.log(`Книга з id ${bookId} не знайдена.`);
+async function getPostBody(postId) {
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
-    },
-    printAllBooks: function() {
-        console.log("Інформація про всі книги в бібліотеці:");
-        this.books.forEach(book => {
-            console.log(`Ім'я: ${book.name}, Автор: ${book.author}, Рік: ${book.year}, ID: ${book.id}`);
-        });
+        const post = await response.json();
+        console.log("Текст body поста:", post.body);
+    } catch (error) {
+        console.error("Помилка при отриманні body поста:", error);
     }
-};
+}
 
 
-Library.addBook("Harry Potter", "J.K. Rowling", 1997, 1);
-Library.addBook("To Kill a Mockingbird", "Harper Lee", 1960, 2);
-Library.addBook("The Great Gatsby", "F. Scott Fitzgerald", 1925, 3);
+async function getPostComments(postId) {
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const comments = await response.json();
+        console.log("Коментарі до поста з ID", postId + ":");
+        comments.forEach(comment => {
+            console.log(" -", comment.body);
+        });
+    } catch (error) {
+        console.error("Помилка при отриманні коментарів поста:", error);
+    }
+}
 
 
-Library.printAllBooks();
-
-Library.printBookInfo(2);
+getPostBody(1);
 
 
-
-
-
+getPostComments(1);
