@@ -1,0 +1,20 @@
+1. CSS celectors
+
+h1#firstHeading
+
+div.plainlist ul>li>a
+
+[srcset]
+
+
+2. XPath
+
+//h1[@id='firstHeading']
+
+//div[@class='plainlist']/ul/li/a
+
+//img[@srcset] 
+
+
+
+
